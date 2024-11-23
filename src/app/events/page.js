@@ -40,5 +40,6 @@ function Events() {
       </ul>
     </div>
   );
-
 }
+
+export default Events;
