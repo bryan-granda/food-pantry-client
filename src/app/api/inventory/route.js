@@ -2,19 +2,24 @@ import axios from 'axios';
 
 export async function GET(request) {
   try {
+    //TODO: Change the URL to the correct endpoint
     const response = await axios.get('http://127.0.0.1:8080/listTransactions?storageCenterId=3');
 
-    console.log('response', response);
-    console.error('response', response);
-    console.error('response.data', response.data);
-    console.log('response.data', response.data);
-
-    return new Response(JSON.stringify({ inventory: response.data }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const data = JSON.stringify({ inventory: response.data });
+    return res.status(200).json(data);
   } catch (error) {
-    console.error('Error fetching inventory', error);
-    return new Response({ status: 500 }, {error: error});
+    return res.status(500).json({ error: error });
+  }
+}
+
+export async function POST(request) {
+  try {
+    //TODO: Change the URL to the correct endpoint
+    const response = await axios.get('http://127.0.0.1:8080/listTransactions?storageCenterId=3');
+
+    const data = JSON.stringify({ inventory: response.data });
+    return res.status(200).json(data);
+  } catch (error) {
+    return res.status(500).json({ error: error });
   }
 }

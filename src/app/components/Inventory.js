@@ -1,10 +1,11 @@
 'use client';
 import React, {useEffect, useState} from 'react';
+import Item from './ItemBox';
 
 function Inventory() {
 
   const [inventory, setInventory] = useState([]);
-  const [loading, setLoading] = useState(true); // To handle loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInventoryHandler = async () => {
@@ -20,10 +21,11 @@ function Inventory() {
       } else {
         console.error('Error fetching inventory');
       }
-      setLoading(false); // Set loading to false after fetch
+      setLoading(false);
     };
 
-    fetchInventoryHandler();
+    // Uncomment to fetch inventory
+    // fetchInventoryHandler();
   }, []);
 
   if (loading) {
@@ -38,15 +40,13 @@ function Inventory() {
   return (
     <div>
       <h1>Inventory</h1>
-      <ul>
-        {inventory.map((item) => (
-          <li key={item.databaseId}>
-            <h3>{item.itemName}</h3>
-            <p>Category: {item.itemType}</p>
-            <p>Amount: {item.quantity}</p>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul>
+          {inventory.map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
