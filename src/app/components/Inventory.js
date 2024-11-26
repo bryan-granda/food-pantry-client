@@ -25,7 +25,7 @@ function Inventory() {
     };
 
     // Uncomment to fetch inventory
-    // fetchInventoryHandler();
+    fetchInventoryHandler();
   }, []);
 
   if (loading) {

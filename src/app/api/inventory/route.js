@@ -1,25 +1,13 @@
 import axios from 'axios';
 
-export async function GET(request) {
+export async function GET(res) {
   try {
     //TODO: Change the URL to the correct endpoint
-    const response = await axios.get('http://127.0.0.1:8080/listTransactions?storageCenterId=3');
+    const apiResponse = await axios.get('http://127.0.0.1:8080/listTransactions?storageCenterId=3');
 
-    const data = JSON.stringify({ inventory: response.data });
-    return res.status(200).json(data);
+    return new Response(JSON.stringify({ inventory: apiResponse.data }), { status: 200 });
   } catch (error) {
-    return res.status(500).json({ error: error });
-  }
-}
-
-export async function POST(request) {
-  try {
-    //TODO: Change the URL to the correct endpoint
-    const response = await axios.get('http://127.0.0.1:8080/listTransactions?storageCenterId=3');
-
-    const data = JSON.stringify({ inventory: response.data });
-    return res.status(200).json(data);
-  } catch (error) {
-    return res.status(500).json({ error: error });
+    console.error("Error in GET handler:", error.message);
+    return new Response(JSON.stringify({ error: "Failed to process the request." }), { status: 500 });
   }
 }
