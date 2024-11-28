@@ -13,6 +13,9 @@ export default function Home() {
         <p>The following items are available for people dealing with shelter and food Insecurity.</p>
         <AddItemForm />
         <Inventory />
+        <Link href="/volunteer">
+          <button className={styles.volunteerButton}>Volunteer</button>
+        </Link>
       </main>
     </div>
   );
