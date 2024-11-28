@@ -1,0 +1,76 @@
+.signupForm {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    font-family: Arial, sans-serif;
+}
+
+/* Title styling */
+.signupForm h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Labels for form fields */
+.signupForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input fields and dropdowns */
+.signupForm input,
+.signupForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+/* Dropdown styling */
+.signupForm select {
+    background-color: #fff;
+}
+
+/* Button styling */
+.signupForm button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signupForm button:hover {
+    background-color: #0056b3;
+}
+
+/* Error message styling */
+.signupForm .error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Success message styling */
+.signupForm .success {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
