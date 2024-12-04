@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useContext } from 'react';
 import { SessionContext } from '../../../context/SessionContext';
-import { API_KEY } from '@/app/components/constants.js';
+import { BASE_URL, API_KEY } from '@/app/components/constants.js';
 import styles from './Forms.module.css';
 
 export default function UpdateProfile() {
@@ -17,7 +17,7 @@ export default function UpdateProfile() {
       const fetchVolunteerInfo = async () => {
         try {
           const response = await fetch(
-            `http://localhost:8080/getVolunteerInfo?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}`
+            `${BASE_URL}/getVolunteerInfo?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}`
           );
       
           if (response.ok) {
@@ -59,7 +59,7 @@ export default function UpdateProfile() {
     if (name) {
       try {
         const response = await fetch(
-          `http://localhost:8080/updateName?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}&name=${encodeURIComponent(name)}`,
+          `${BASE_URL}/updateName?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}&name=${encodeURIComponent(name)}`,
           { method: 'PATCH' }
         );
 
@@ -75,11 +75,10 @@ export default function UpdateProfile() {
       }
     }
 
-    // Update Role
     if (role) {
       try {
         const response = await fetch(
-          `http://localhost:8080/updateRole?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}&role=${encodeURIComponent(role)}`,
+          `${BASE_URL}/updateRole?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}&role=${encodeURIComponent(role)}`,
           { method: 'PATCH' }
         );
 
@@ -107,7 +106,7 @@ export default function UpdateProfile() {
 
       try {
         const response = await fetch(
-          `http://localhost:8080/updateSchedule?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}`,
+          `${BASE_URL}/updateSchedule?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}`,
           {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },

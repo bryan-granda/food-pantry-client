@@ -2,31 +2,31 @@
 
 import { useState, useContext } from 'react';
 import { SessionContext } from '../../../context/SessionContext';
-import { API_KEY } from '@/app/components/constants.js';
+import { BASE_URL, API_KEY } from '@/app/components/constants.js';
 import styles from './Forms.module.css';
 
 export default function DeleteProfile() {
-  const { volunteerID, logout } = useContext(SessionContext);
+  const { orgID, logoutOrg } = useContext(SessionContext);
   const [confirmation, setConfirmation] = useState(false);
   const [message, setMessage] = useState('');
 
   const handleDelete = async () => {
-    if (!volunteerID) {
+    if (!orgID) {
       setMessage('You must be logged in to delete your profile.');
       return;
     }
 
     try {
       const response = await fetch(
-        `${BASE_URL}/removeVolunteer?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerID)}`,
+        `${BASE_URL}/deleteOrganization?apiKey=${encodeURIComponent(API_KEY)}&orgId=${encodeURIComponent(orgID)}`,
         { method: 'DELETE' }
       );
 
       if (response.ok) {
         setMessage('Profile deleted successfully.');
-        logout();
+        logoutOrg();
       } else if (response.status === 404) {
-        setMessage('Volunteer not found.');
+        setMessage('Organization not found.');
       } else if (response.status === 403) {
         setMessage('Invalid API key.');
       } else {
@@ -35,7 +35,7 @@ export default function DeleteProfile() {
       }
     } catch (err) {
       console.error(err);
-      setMessage('An unexpected error occurred.');
+      setMessage('An error occurred.');
     }
   };
 
