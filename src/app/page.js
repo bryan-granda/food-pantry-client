@@ -6,16 +6,21 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className={styles.page}>
+      <nav className={styles.navbar}>
+      <Link href="/volunteer" className={styles.navLink}>
+  Volunteer
+</Link>
+<Link href="/organization" className={styles.navLink}>
+  Organization
+</Link>
+<Link href="/donations" className={styles.navLink}>
+  Donations
+</Link>
+      </nav>
       <main className={styles.main}>
         <h1>Home</h1>
         <p>Welcome to Columbia University's Food Pantry.</p>
-        <Link href="/events">See Upcoming Events Here</Link>
-        <p>The following items are available for people dealing with shelter and food Insecurity.</p>
-        <AddItemForm />
-        <Inventory />
-        <Link href="/volunteer">
-          <button className={styles.volunteerButton}>Volunteer</button>
-        </Link>
+        <p>Join our food pantry initiative to make a meaningful impact in your community! We offer opportunities to volunteer at events, make donations to support those in need, and host events to help distribute essential food and supplies to those facing hunger and food insecurity.</p>
       </main>
     </div>
   );

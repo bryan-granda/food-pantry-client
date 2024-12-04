@@ -1,19 +1,20 @@
 "use client";
 
 import { useState, useContext } from 'react';
-import { SessionContext } from '../../../context/SessionContext';
-import { BASE_URL, API_KEY } from '@/app/components/constants.js';
+import { SessionContext } from '@/context/SessionContext';
 import styles from './Forms.module.css';
+import { BASE_URL } from '@/app/components/constants';
 
 export default function LoginForm({ onSuccess }) {
-  const [volunteerIDInput, setVolunteerIDInput] = useState('');
+  const [orgIDInput, setOrgIDInput] = useState('');
   const [error, setError] = useState('');
-  const { loginVolunteer } = useContext(SessionContext);
+  const { loginOrg } = useContext(SessionContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
-    const apiEndpoint = `${BASE_URL}/getVolunteerInfo?apiKey=${encodeURIComponent(API_KEY)}&volunteerId=${encodeURIComponent(volunteerIDInput)}`;
+    const apiEndpoint = `${BASE_URL}/getOrganization?orgId=${encodeURIComponent(orgIDInput)}`;
 
     try {
       const response = await fetch(apiEndpoint, {
@@ -24,14 +25,10 @@ export default function LoginForm({ onSuccess }) {
       });
 
       if (response.ok) {
-        loginVolunteer(volunteerIDInput);
-        onSuccess();
-      } else if (response.status === 404) {
-        setError('Volunteer not found.');
-      } else if (response.status === 403) {
-        setError('Invalid API key.');
+          loginOrg(orgIDInput);
+          onSuccess();
       } else {
-        setError('Error verifying Volunteer ID.');
+        setError('Error verifying Organization ID.');
       }
     } catch (err) {
       console.error(err);
@@ -43,13 +40,14 @@ export default function LoginForm({ onSuccess }) {
     <form onSubmit={handleSubmit} className={styles.form}>
       <h2>Log In</h2>
       <label>
-        Volunteer ID:
+        Organization ID:
         <input
           type="text"
-          value={volunteerIDInput}
-          onChange={(e) => setVolunteerIDInput(e.target.value)}
+          value={orgIDInput}
+          onChange={(e) => setOrgIDInput(e.target.value)}
           required
           className={styles.input}
+          placeholder="Enter your Organization ID"
         />
       </label>
       <button type="submit" className={styles.submitButton}>Log In</button>

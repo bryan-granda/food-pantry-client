@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import styles from './Forms.module.css';
-import { API_KEY } from '@/app/components/constants.js'; 
+import { API_KEY,BASE_URL } from '@/app/components/constants.js'; 
 
 export default function EnrollForm() {
   const [name, setName] = useState('');
@@ -31,7 +31,7 @@ export default function EnrollForm() {
       return;
     }
 
-    const apiEndpoint = `http://localhost:8080/enrollVolunteer?apiKey=${encodeURIComponent(API_KEY)}&name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}`;
+    const apiEndpoint = `${BASE_URL}/enrollVolunteer?apiKey=${encodeURIComponent(API_KEY)}&name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}`;
 
     setIsLoading(true);
     try {

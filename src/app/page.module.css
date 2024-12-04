@@ -166,3 +166,64 @@ a.secondary {
     filter: invert();
   }
 }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--gray-alpha-200); 
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 16px; 
+  border-bottom: 1px solid var(--gray-alpha-100); 
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgba(var(--gray-rgb), 0.1);
+}
+
+.navbar a {
+  appearance: none;
+  border-radius: 128px;
+  height: 48px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    transform 0.2s ease; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  gap: 8px;
+}
+
+
+.navbar a.primary {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.navbar a.primary:hover {
+  background: var(--button-primary-hover);
+  color: var(--foreground);
+  transform: scale(1.05);
+}
+
+
+.navbar a.secondary {
+  background: transparent;
+  border-color: var(--gray-alpha-200);
+  color: var(--foreground);
+}
+
+.navbar a.secondary:hover {
+  background: var(--button-secondary-hover);
+  border-color: var(--foreground);
+  transform: scale(1.05);
+}
+

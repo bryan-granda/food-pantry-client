@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import styles from './Forms.module.css';
-import { API_KEY } from '@/app/components/constants.js'; 
+import { API_KEY, BASE_URL } from '@/app/components/constants.js'; 
 
 export default function EventsView() {
   const [events, setEvents] = useState([]);
@@ -16,7 +16,7 @@ export default function EventsView() {
     setMessage('');
     setEvents([]);
 
-    const apiEndpoint = `http://localhost:8080/listEvents?apiKey=${encodeURIComponent(API_KEY)}`;
+    const apiEndpoint = `${BASE_URL}/listEvents?apiKey=${encodeURIComponent(API_KEY)}`;
 
     try {
       const response = await fetch(apiEndpoint, {
@@ -54,7 +54,7 @@ export default function EventsView() {
       return;
     }
 
-    const apiEndpoint = `http://localhost:8080/searchEventsByDate?apiKey=${encodeURIComponent(API_KEY)}&date=${encodeURIComponent(searchDate)}`;
+    const apiEndpoint = `${BASE_URL}/searchEventsByDate?apiKey=${encodeURIComponent(API_KEY)}&date=${encodeURIComponent(searchDate)}`;
 
     try {
       const response = await fetch(apiEndpoint, {
@@ -92,7 +92,7 @@ export default function EventsView() {
       return;
     }
 
-    const apiEndpoint = `http://localhost:8080/searchEventsByLocation?apiKey=${encodeURIComponent(API_KEY)}&location=${encodeURIComponent(searchLocation)}`;
+    const apiEndpoint = `${BASE_URL}/searchEventsByLocation?apiKey=${encodeURIComponent(API_KEY)}&location=${encodeURIComponent(searchLocation)}`;
 
     try {
       const response = await fetch(apiEndpoint, {
