@@ -106,7 +106,7 @@ export default function DistributeToEvent() {
 
       if (response.ok) {
         setMessage("Items distributed successfully!");
-        fetchItems(selectedStorageCenter); // Refresh items after successful distribution
+        fetchItems(selectedStorageCenter); 
         setSelectedItem("");
         setQuantity("");
         setMaxQuantity(0);

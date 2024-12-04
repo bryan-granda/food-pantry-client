@@ -19,7 +19,7 @@ export default function Home() {
       </nav>
       <main className={styles.main}>
         <h1>Home</h1>
-        <p>Welcome to Columbia University's Food Pantry.</p>
+        <p>Welcome to Columbia University&apos;s Food Pantry.</p>
         <p>Join our food pantry initiative to make a meaningful impact in your community! We offer opportunities to volunteer at events, make donations to support those in need, and host events to help distribute essential food and supplies to those facing hunger and food insecurity.</p>
       </main>
     </div>
